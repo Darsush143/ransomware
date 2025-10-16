@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <style>
+        /* 🌆 Background & Font Setup */
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 💎 Glassmorphism Container */
+        .form-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px 50px;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.9rem;
+            letter-spacing: 1px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ✨ Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        label {
+            text-align: left;
+            font-weight: 600;
+            margin: 12px 0 6px;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(37, 117, 252, 0.7);
+        }
+
+        /* 🎨 Button Styling */
+        button {
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #5b0ea1, #1e6ce3);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 🌸 Smooth Glow Animation */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #6a11cb, 0 0 10px #2575fc; }
+            50% { box-shadow: 0 0 20px #6a11cb, 0 0 30px #2575fc; }
+            100% { box-shadow: 0 0 5px #6a11cb, 0 0 10px #2575fc; }
+        }
+
+        button:active {
+            animation: glow 1s infinite alternate;
+        }
+
+        /* 📱 Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 30px 25px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>✏️ Edit Item</h1>
+        <form method="POST">
+            <label for="name">Item Name</label>
+            <input type="text" id="name" name="name" value="{{ item[1] }}" required>
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity" value="{{ item[2] }}" required>
+
+            <label for="price">Price (₹)</label>
+            <input type="text" id="price" name="price" value="{{ item[3] }}" required>
+
+            <button type="submit">💾 Update Item</button>
+        </form>
+    </div>
+</body>
+</html>
